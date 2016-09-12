@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Human" Class="HumanDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Human.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="HumanConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.customerTab" Member="customerTabs">
+    <Type Name="customerTab">
+      <Column Name="C_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Type" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="City" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Industry" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Linkman" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Source" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Pay" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Communication" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Import_Emp_ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Import_Time" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.workDesTab" Member="workDesTabs">
+    <Type Name="workDesTab">
+      <Column Name="WD_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="P_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Start_Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="End_Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Job" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.departmentTab" Member="departmentTabs">
+    <Type Name="departmentTab">
+      <Column Name="D_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(8,0)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Right]" Member="Right" Type="System.Data.Linq.Binary" DbType="Binary(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="employees" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employeeTab" Member="employeeTabs">
+    <Type Name="employeeTab">
+      <Column Name="E_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sex" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Phone" Type="System.Decimal" DbType="Decimal(11,0)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Job" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.jobBaseTab" Member="jobBaseTabs">
+    <Type Name="jobBaseTab">
+      <Column Name="J_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(8,0)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.jobCfgTab" Member="jobCfgTabs">
+    <Type Name="jobCfgTab">
+      <Column Name="JC_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="J_RID" Type="System.Decimal" DbType="Decimal(8,0)" CanBeNull="true" />
+      <Column Name="[Right]" Member="Right" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.personTab" Member="personTabs">
+    <Type Name="personTab">
+      <Column Name="P_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(8,0)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Card" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CardType" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Education" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Job" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Industry" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Experience" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Money" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.Decimal" DbType="Decimal(11,0)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="QQ" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Import_EMP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Import_Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.publishJobTab" Member="publishJobTabs">
+    <Type Name="publishJobTab">
+      <Column Name="PJ_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="C_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Job" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Description" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Money" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Industry" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Count" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remain" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Person_ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="SignDate" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Recommend_Emp_ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Cmp_Emp_ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Pay" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Import_Emp_ID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Import_Time" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.rightTab" Member="rightTabs">
+    <Type Name="rightTab">
+      <Column Name="R_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(8,0)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.taskTab" Member="taskTabs">
+    <Type Name="taskTab">
+      <Column Name="T_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(8,0)" CanBeNull="true" />
+      <Column Name="E_ID_Recv" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="E_ID_Sent" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LimitTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Context" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Reback" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.taskTmpTab" Member="taskTmpTabs">
+    <Type Name="taskTmpTab">
+      <Column Name="TM_RID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(8,0)" CanBeNull="true" />
+      <Column Name="Context" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 11.5" name="HumanDB">
+  <DataContextMoniker Name="/HumanDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="67d804b7-d88e-45ff-ad65-f6eba9d787d1" absoluteBounds="0.75, 0.75, 2, 3.5700402832031246">
+      <DataClassMoniker Name="/HumanDBDataContext/customerTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91cab654-ad55-4dd5-b79e-f3ebfda8142e" absoluteBounds="0.765, 1.21, 1.9700000000000002, 3.010040283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e3acfdf1-dd31-4181-9f5d-b8cc1e23d5b2" absoluteBounds="3.75, 0.75, 2, 2.0916874186197916">
+      <DataClassMoniker Name="/HumanDBDataContext/workDesTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c49cb838-4162-4d27-83aa-b419d7b31083" absoluteBounds="3.765, 1.21, 1.9700000000000002, 1.5316874186197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="19bfed82-836c-4baf-b50e-c6ad0e17082e" absoluteBounds="3.75, 3.75, 2, 1.7220992024739577">
+      <DataClassMoniker Name="/HumanDBDataContext/departmentTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d7a4dd40-5172-4680-8084-9bef24f72ceb" absoluteBounds="3.765, 4.21, 1.9700000000000002, 1.1620992024739583" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b1e7b6fb-c92e-4038-a69d-2b470042b5a2" absoluteBounds="6.75, 0.75, 2, 2.4612756347656255">
+      <DataClassMoniker Name="/HumanDBDataContext/employeeTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="86e733c3-f268-47e4-96c6-0da215eff53b" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.901275634765625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="96ef5494-f31f-4ab3-90fb-eece3db6f370" absoluteBounds="0.75, 6.75, 2, 1.3525109863281255">
+      <DataClassMoniker Name="/HumanDBDataContext/jobBaseTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="358cd1ac-4b1c-4270-9d82-a30e2d69b07e" absoluteBounds="0.765, 7.21, 1.9700000000000002, 0.792510986328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="02ee619f-8bb8-4a1e-9beb-d0d40e152b81" absoluteBounds="3.75, 6.75, 2, 1.5373050944010416">
+      <DataClassMoniker Name="/HumanDBDataContext/jobCfgTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f82d4c2a-0313-4501-a08c-889dc2d531c8" absoluteBounds="3.765, 7.21, 1.9700000000000002, 0.97730509440104174" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="df9d2127-e536-4be3-88a6-aab8106844c1" absoluteBounds="6.75, 4.75, 2, 4.3092167154947916">
+      <DataClassMoniker Name="/HumanDBDataContext/personTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dc05b810-5a87-4bf1-aba2-6a36ed94a16e" absoluteBounds="6.765, 5.21, 1.9700000000000002, 3.749216715494792" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="35cdbf3f-a3e5-4e12-bd7e-96f27e29a9d3" absoluteBounds="9.75, 0.75, 2, 3.7548343912760416">
+      <DataClassMoniker Name="/HumanDBDataContext/publishJobTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f9ec682c-fd1e-4a44-82de-4d146204e6dd" absoluteBounds="9.765, 1.21, 1.9700000000000002, 3.1948343912760415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4b7133c7-0b5a-416c-a0ce-a64a6731fd6b" absoluteBounds="0.75, 9.75, 2, 1.5373050944010416">
+      <DataClassMoniker Name="/HumanDBDataContext/rightTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9dbc9c7c-70d0-4ce6-8f53-c307614578c6" absoluteBounds="0.765, 10.21, 1.9700000000000002, 0.97730509440104174" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="07b15025-39da-4b09-86a4-abee2cc756db" absoluteBounds="9.75, 5.75, 2, 2.4612756347656255">
+      <DataClassMoniker Name="/HumanDBDataContext/taskTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="556ab5d8-82e4-4891-8a78-71a96df17ef8" absoluteBounds="9.765, 6.21, 1.9700000000000002, 1.901275634765625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b07ed51d-fa51-45aa-b25a-91c8e856a7a1" absoluteBounds="9.75, 9.75, 2, 1.3525109863281237">
+      <DataClassMoniker Name="/HumanDBDataContext/taskTmpTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8adb5bd4-736a-482e-9450-e4aee085f117" absoluteBounds="9.765, 10.21, 1.9700000000000002, 0.792510986328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

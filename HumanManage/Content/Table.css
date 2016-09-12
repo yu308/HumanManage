@@ -1,0 +1,74 @@
+﻿/*表格样式。*/ 
+.table { 
+width:100%; 
+padding: 0px; 
+margin: 0px; 
+font-family:Arial, Tahoma, Verdana, Sans-Serif,宋体; 
+border-left:1px solid #ADD8E6; 
+border-collapse:collapse; 
+} 
+/*表头样式。*/ 
+.table th { 
+font-size:12px; 
+font-weight:600; 
+color: #303030; 
+border-right: 1px solid #ADD8E6; 
+border-bottom: 1px solid #ADD8E6; 
+border-top: 1px solid #ADD8E6; 
+letter-spacing: 2px; 
+text-align: left; 
+padding: 10px 0px 10px 0px; 
+background: url(../images/tablehdbg.png); 
+white-space:nowrap; 
+text-align:center; 
+overflow: hidden; 
+} 
+/*单元格样式。*/ 
+.table td { 
+border-right: 1px solid #ADD8E6; 
+border-bottom: 1px solid #ADD8E6; 
+background: #fff; 
+font-size:12px; 
+padding: 3px 3px 3px 6px; 
+color: #303030; 
+word-break:break-all; 
+word-wrap:break-word; 
+white-space:normal; 
+} 
+/*蓝色单元格样式，主要用于隔行变色。*/ 
+.table td.color{ 
+background:#edf7f9; 
+} 
+/*表格中超级链接样式。*/ 
+.table td a:link{ 
+font-weight:400 ; 
+color:#2259D7 ; 
+text-decoration:none ; 
+word-break:break-all; 
+word-wrap:break-word; 
+white-space:normal; 
+} 
+.table td a:visited { 
+font-weight:400 ; 
+color:#2259D7 ; 
+text-decoration:none ; 
+word-break:break-all; 
+word-wrap:break-word; 
+white-space:normal; 
+} 
+.table td a:hover { 
+font-weight:400 ; 
+text-decoration:underline ; 
+color: #303030; 
+word-break:break-all; 
+word-wrap:break-word; 
+white-space:normal; 
+} 
+.table td a:active { 
+font-weight:400 ; 
+text-decoration:none ; 
+color:#2259D7 ; 
+word-break:break-all; 
+word-wrap:break-word; 
+white-space:normal; 
+} 
