@@ -885,7 +885,7 @@ namespace HumanManage.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Right]", Storage="_Right", DbType="Binary(50)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Right]", Storage="_Right", DbType="Binary(50)", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Right
 		{
 			get
