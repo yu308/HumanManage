@@ -21,10 +21,10 @@ namespace HumanManage.Controllers
         }
 
        [HttpPost]
-        public ActionResult LoginAction(string user_login, string user_password)
+        public ActionResult LoginAction(string user_name, string user_pwd)
         {
-            
-           return RedirectToAction("Index"); /*同一控制器内跳转*/
+            //return Json("success");
+            return RedirectToAction("Index"); /*同一控制器内跳转*/
         }
 
         public ActionResult Index()
