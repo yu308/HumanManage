@@ -58,15 +58,13 @@
         function rsalogin()
         {
             setMaxDigits(129);
-            var key = new RSAKeyPair("@ViewData["E"].ToString()", "", "@ViewData["M"].ToString()");
-            var pwd = $("#user_pwd_v").val();
-            var name = $("#user_name_v").val();
-            if (pwd != "" && name!="") {
-                pwd = encryptedString(key, pwd);
-                $("#user_name").val(name);
-                $("#user_pwd").val(pwd);
-                $("#formlogin").submit();
-            }
+            var key = new RSAKeyPair("@ViewData["E"]", "", "@ViewData["M"]");
+            var pwd = $("#user_pwd").val();
+            var name = $("#user_name").val();
+            pwd = encryptedString(key, pwd);
+            $("#user_name").val(name);
+            $("#user_pwd").val(pwd);
+              
             @*jQuery.post("@Url.Action("LoginAction")",
                 {
                     user_name:$("#u_login").val(),
@@ -78,14 +76,13 @@
 </head>
 <body class="bg-dark">
     <div class="login-form padding20 block-shadow">
-        <form data-role="validator" id="formlogin" data-on-before-submit="return true" >
+        <form data-role="validator" id="formlogin" data-on-submit="rsalogin" method="post" action="@Url.Action("LoginAction")" >
             <h2 class="text-light">职员登陆</h2>
             <hr class="thin" />
             <br />
             <div class="input-control text full-size" data-role="input">
                 <label for="user_login">邮 箱:</label>
-                <input type="text" data-validate-func="email" data-validate-hint="请输入邮箱地址" name="user_name" id="user_name_v" >
-                <input type="hidden" id="user_name" />
+                <input type="text" data-validate-func="email" data-validate-hint="请输入邮箱地址" name="user_name" id="user_name" >
                 <span class="input-state-error mif-warning"></span>
                 <span class="input-state-success mif-checkmark"></span>
                 <button class="button helper-button clear"><span class="mif-cross"></span></button>
@@ -94,8 +91,7 @@
             <br />
             <div class="input-control password full-size" data-role="input">
                 <label for="user_password">密 码:</label>
-                <input type="password" data-validate-func="minlength" data-validate-arg="6" data-validate-hint="密码至少为6位"  name="user_pwd" id="user_pwd_v"  >
-                <input type="hidden" id="user_pwd" />
+                <input type="password" data-validate-func="minlength" data-validate-arg="6" data-validate-hint="密码至少为6位"  name="user_pwd" id="user_pwd"  >
                 <span class="input-state-error mif-warning"></span>
                 <span class="input-state-success mif-checkmark"></span>
                 <button class="button helper-button reveal"><span class="mif-looks"></span></button>
@@ -103,7 +99,7 @@
             <br />
             <br />
             <div class="form-actions">
-                <button type="submit"  class="button success  primary" onclick="rsalogin()" >登 陆</button>
+                <button type="submit"  class="button success  primary"  >登 陆</button>
                 <button type="button" class="button link" onclick="document.location.href=$('#cancel').attr('href')">取 消</button>
                 <a id="cancel" href="." style="display:none"></a>
             </div>

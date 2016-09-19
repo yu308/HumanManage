@@ -23,7 +23,7 @@ namespace HumanManage.Controllers
        [HttpPost]
         public ActionResult LoginAction(string user_name, string user_pwd)
         {
-            //return Json("success");
+            string plain_pwd=RSAHelper.RSADecrpt(user_pwd);
             return RedirectToAction("Index"); /*同一控制器内跳转*/
         }
 

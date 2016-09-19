@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 
 namespace HumanManage.Helper
 {
     public class RSAHelper
     {
-
+        private static string private_key = string.Empty;
         public static void RSAGen()
         {
             string keyFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "key.xml");
@@ -24,11 +25,34 @@ namespace HumanManage.Helper
             }
         }
 
-        private static string RSAByte2Str(byte[] b)
+        private static string BytesToHexString(byte[] input)
         {
-            return BitConverter.ToString(b).Replace("-", string.Empty);
+            StringBuilder hexString = new StringBuilder(64);
+            for (int i = 0; i < input.Length; i++)
+            {
+                hexString.Append(String.Format("{0:X2}", input[i]));
+            }
+            return hexString.ToString();
         }
-        public static List<string> RSAGet()
+        private static byte[] HexStringToBytes(string hex)
+        {
+            if (hex.Length == 0)
+            {
+                return new byte[] { 0 };
+            }
+            if (hex.Length % 2 == 1)
+            {
+                hex = "0" + hex;
+            }
+            byte[] result = new byte[hex.Length / 2];
+            for (int i = 0; i < hex.Length / 2; i++)
+            {
+                result[i] = byte.Parse(hex.Substring(2 * i, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
+            }
+            return result;
+        }
+    
+    public static List<string> RSAGet()
         {
             string keyFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "key.xml");
             RSACryptoServiceProvider sp = new RSACryptoServiceProvider();
@@ -41,8 +65,19 @@ namespace HumanManage.Helper
             sp.FromXmlString(str);
 
             RSAParameters rsap = sp.ExportParameters(false);
+            private_key = sp.ToXmlString(true);
+            return new List<string> { BytesToHexString(rsap.Exponent), BytesToHexString(rsap.Modulus) };
+        }
 
-            return new List<string> { RSAByte2Str(rsap.Exponent), RSAByte2Str(rsap.Modulus) };
+        public static string RSADecrpt(string encrypt_string)
+        {
+            string plain_str = string.Empty;
+            RSACryptoServiceProvider sp = new RSACryptoServiceProvider();
+            sp.FromXmlString(private_key);
+            byte[] res = sp.Decrypt(HexStringToBytes(encrypt_string), false);
+            ASCIIEncoding enc = new ASCIIEncoding();
+            plain_str = enc.GetString(res);
+            return plain_str;
         }
     }
 }
