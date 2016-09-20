@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 <head>
     <style>
@@ -49,6 +49,12 @@
             });
         });
     </script>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/metro/css/metro.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/metro/css/metro-icons.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/metro/css/metro-responsive.css")" />
+
+    <script src="@Url.Content("~/Scripts/jquery-3.1.0.min.js")"></script>
+    <script src="@Url.Content("~/Content/metro/js/metro.js ")"></script>
 
     <script type="text/javascript" src="@Url.Content("~/Scripts/BigInt.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/Barrett.js")"></script>
@@ -68,7 +74,7 @@
                     user_pwd: pwd
                 },
                 function (data, status) {
-                    if (data == "success") window.location = "@Url.Action("Index","Home")"
+                    if (data == "success") window.location = "@Url.Action("Index","Home")";
                     else {
                         alert("密码错误")
                     }

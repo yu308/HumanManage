@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/metro/css/metro-responsive.css")" />
 
     <script src="@Url.Content("~/Scripts/jquery-3.1.0.min.js")"></script>
-    @*<script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>*@
     <script src="@Url.Content("~/Content/metro/js/metro.js ")"></script>
 
     @*<meta charset="utf-8" />
@@ -26,7 +25,19 @@
         }
     </style>
 </head>
-<body>
-    @RenderBody()
+<body class="bg-grayLight">
+    <!--main start -->
+    <div id="main" >
+        <div id="left_main">@RenderPage("~/Views/Shared/Error.cshtml",null)</div>
+        <div id="top_main"></div>
+        <div id="center_main">@RenderBody()</div>
+        <div id="right_main"></div>
+    </div>
+    <!--main end -->
+    <!--footerMain start -->
+    <div id="footer">
+    </div>
+    <!--footerMain end -->
+
 </body>
 </html>
