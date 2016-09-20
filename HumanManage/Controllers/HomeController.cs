@@ -20,13 +20,13 @@ namespace HumanManage.Controllers
             return View();
         }
 
-       [HttpPost]
+   
         public ActionResult LoginAction(string user_name, string user_pwd)
         {
-            string plain_pwd=RSAHelper.RSADecrpt(user_pwd);
-            return RedirectToAction("Index"); /*同一控制器内跳转*/
+            string plain_pwd = RSAHelper.RSADecrpt(user_pwd);
+            //return RedirectToAction("Index"); /*同一控制器内跳转*/
+            return Json("success");
         }
-
         public ActionResult Index()
         {
             return View();
