@@ -882,7 +882,6 @@ a.tag {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-/* Block function */
 .set-border {
   border: 1px #d9d9d9 solid;
 }
@@ -891,6 +890,10 @@ a.tag {
 }
 .set-border.large-border {
   border-width: 16px;
+}
+.fix-slow-animation {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .grid {
   display: block;
@@ -7622,6 +7625,8 @@ input[type="submit"].link:active {
   -webkit-animation: swinging 5s ease-in-out 0s;
           animation: swinging 5s ease-in-out 0s;
 }
+/* transform functions */
+/* Block function */
 .ani-spin,
 .ani-hover-spin:hover {
   -webkit-animation: ani-spin 1.5s linear infinite;
@@ -12882,6 +12887,8 @@ input[type="submit"].link:active {
   background: #1d1d1d;
   color: #eeeeee;
   padding: .625rem;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .charm .charm-closer {
   position: absolute;
@@ -13566,6 +13573,9 @@ p [data-hint] {
   z-index: 1050;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
 }
+.dialog.dialog-ex {
+  padding: .625rem;
+}
 .dialog .dialog-close-button {
   position: absolute;
   height: 1.5rem;
@@ -13599,6 +13609,23 @@ p [data-hint] {
   border-color: #777777;
   content: '\D7';
   line-height: 1;
+}
+.dialog .dialog-title {
+  font-size: 1.125rem;
+}
+.dialog .dialog-title + .dialog-content {
+  margin-top: 20px;
+}
+.dialog .dialog-actions {
+  position: relative;
+  display: block;
+  padding: 8px 0;
+  text-align: right;
+  margin-top: .625rem;
+}
+.dialog .dialog-actions .button {
+  margin: 0 4px;
+  min-width: 64px;
 }
 .dialog.success {
   background-color: #60a917;
@@ -15834,7 +15861,6 @@ video::-webkit-media-controls-enclosure {
 .bg-darker {
   background-color: #222222 !important;
 }
-/* transform functions */
 .rotate45 {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);

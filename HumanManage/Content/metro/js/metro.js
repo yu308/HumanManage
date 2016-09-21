@@ -1,7 +1,7 @@
 /*!
- * Metro UI CSS v3.0.15 (http://metroui.org.ua)
+ * Metro UI CSS v3.0.16 (http://metroui.org.ua)
  * Copyright 2012-2016 Sergey Pimenov
- * Licensed under MIT (http://metroui.org.ua/license.html)
+ * Licensed under  ()
  */
 
 (function( factory ) {
@@ -15,7 +15,7 @@
 
 var $ = jQuery;
 
-window.METRO_VERSION = '3.0.15';
+window.METRO_VERSION = '3.0.16';
 
 // Source: js/requirements.js
 if (typeof jQuery === 'undefined') {
@@ -278,6 +278,19 @@ window.METRO_LOCALES = {
         ],
         buttons: [
             "วันนี้", "ล้าง", "ยกเลิก", "ช่วยเหลือ", "กลับ", "ต่อไป", "เสร็จ"
+        ]
+    },
+    'id': {
+        months: [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember",
+            "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Dec"
+        ],
+        days: [
+            "Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu",
+            "Mi", "Se", "Se", "Ra", "Ka", "Ju", "Sa"
+        ],
+        buttons: [
+            "Hari Ini", "Mengulang", "Batalkan", "Bantuan", "Sebelumnya", "Berikutnya", "Selesai"
         ]
     }
 };
@@ -2108,30 +2121,6 @@ $.widget("metro.accordion", {
 
                     });
 
-
-                    //we have to calculate everything new, if the user resizes or zooms the window
-                    $(window).resize(function () {
-                        $("[data-role=appbar]:not(.no-flexible)").each(function () {
-                            $(this).data("appbar").resize();
-                        });
-                    });
-
-
-                    //because fonts(also icon-fonts) are often loaded async after the page has loaded and this script walked through already, 
-                    //we have to check again after these elements loaded. Because there is no way to observe only specific elements, we do it for the window
-                    $(window).load(function () {
-                        $("[data-role=appbar]:not(.no-flexible)").each(function () {
-                            $(this).data("appbar").resize();
-                        });
-                    });
-
-                    //pictures (or other outside stuff was loaded - pictures are also often loaded async or have a lazy load or are injected after a while. 
-                    //a picture can change a size of the element from the appbar, so we must recheck it again.
-                    $("[data-role=appbar]:not(.no-flexible) [src]").on("load", function () {
-                        //who am i?
-                        var appbar = $(this).closest("[data-role=appbar]").data("appbar");
-                        appbar.resize();
-                    });
                 }
             }
 
@@ -2141,6 +2130,30 @@ $.widget("metro.accordion", {
         _setOption: function (key, value) {
             this._super('_setOption', key, value);
         }
+    });
+
+    //we have to calculate everything new, if the user resizes or zooms the window
+    $(window).on('resize', function () {
+        $("[data-role=appbar]:not(.no-flexible)").each(function () {
+            $(this).data("appbar").resize();
+        });
+    });
+
+
+    //because fonts(also icon-fonts) are often loaded async after the page has loaded and this script walked through already,
+    //we have to check again after these elements loaded. Because there is no way to observe only specific elements, we do it for the window
+    $(window).on('load', function () {
+        $("[data-role=appbar]:not(.no-flexible)").each(function () {
+            $(this).data("appbar").resize();
+        });
+    });
+
+    //pictures (or other outside stuff was loaded - pictures are also often loaded async or have a lazy load or are injected after a while.
+    //a picture can change a size of the element from the appbar, so we must recheck it again.
+    $("[data-role=appbar]:not(.no-flexible) [src]").on("load", function () {
+        //who am i?
+        var appbar = $(this).closest("[data-role=appbar]").data("appbar");
+        appbar.resize();
     });
 
 // Source: js/widgets/audio-player.js
@@ -3142,13 +3155,13 @@ $.widget("metro.calendar", {
             table = this.element.find('.calendar-grid');
 
         if (this._mode === 'day') {
-            table.find('.btn-select-month').on('click', function (e) {
+            table.find('.btn-select-month').off('click').on('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
                 that._mode = 'month';
                 that._renderCalendar();
             });
-            table.find('.btn-previous-month').on('click', function (e) {
+            table.find('.btn-previous-month').off('click').on('click', function (e) {
                 that._event = 'eventPrevious';
                 e.preventDefault();
                 e.stopPropagation();
@@ -3159,7 +3172,7 @@ $.widget("metro.calendar", {
                 }
                 that._renderCalendar();
             });
-            table.find('.btn-next-month').on('click', function (e) {
+            table.find('.btn-next-month').off('click').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -3170,14 +3183,14 @@ $.widget("metro.calendar", {
                 }
                 that._renderCalendar();
             });
-            table.find('.btn-previous-year').on('click', function (e) {
+            table.find('.btn-previous-year').off('click').on('click', function (e) {
                 that._event = 'eventPrevious';
                 e.preventDefault();
                 e.stopPropagation();
                 that._year -= 1;
                 that._renderCalendar();
             });
-            table.find('.btn-next-year').on('click', function (e) {
+            table.find('.btn-next-year').off('click').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -3223,7 +3236,7 @@ $.widget("metro.calendar", {
                 }
             });
         } else if (this._mode === 'month') {
-            table.find('.month a').on('click', function (e) {
+            table.find('.month a').off('click').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -3231,21 +3244,21 @@ $.widget("metro.calendar", {
                 that._mode = 'day';
                 that._renderCalendar();
             });
-            table.find('.btn-previous-year').on('click', function (e) {
+            table.find('.btn-previous-year').off('click').on('click', function (e) {
                 that._event = 'eventPrevious';
                 e.preventDefault();
                 e.stopPropagation();
                 that._year -= 1;
                 that._renderCalendar();
             });
-            table.find('.btn-next-year').on('click', function (e) {
+            table.find('.btn-next-year').off('click').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
                 that._year += 1;
                 that._renderCalendar();
             });
-            table.find('.btn-select-year').on('click', function (e) {
+            table.find('.btn-select-year').off('click').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -3253,7 +3266,7 @@ $.widget("metro.calendar", {
                 that._renderCalendar();
             });
         } else {
-            table.find('.year a').on('click', function (e) {
+            table.find('.year a').off('click').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -3261,14 +3274,14 @@ $.widget("metro.calendar", {
                 that._mode = 'month';
                 that._renderCalendar();
             });
-            table.find('.btn-previous-year').on('click', function (e) {
+            table.find('.btn-previous-year').off('click').on('click', function (e) {
                 that._event = 'eventPrevious';
                 e.preventDefault();
                 e.stopPropagation();
                 that._distance -= 10;
                 that._renderCalendar();
             });
-            table.find('.btn-next-year').on('click', function (e) {
+            table.find('.btn-next-year').off('click').on('click', function (e) {
                 that._event = 'eventNext';
                 e.preventDefault();
                 e.stopPropagation();
@@ -3277,7 +3290,7 @@ $.widget("metro.calendar", {
             });
         }
 
-        table.find('.calendar-btn-today').on('click', function (e) {
+        table.find('.calendar-btn-today').off('click').on('click', function (e) {
             //that._event = 'eventNext';
             e.preventDefault();
             e.stopPropagation();
@@ -3288,7 +3301,7 @@ $.widget("metro.calendar", {
             that._day = that.options.date.getDate();
             that._renderCalendar();
         });
-        table.find('.calendar-btn-clear').on('click', function (e) {
+        table.find('.calendar-btn-clear').off('click').on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
             that.options.date = new Date();
@@ -4673,9 +4686,8 @@ $.widget( "metro.dialog" , {
         show: false,
         href: false,
         contentType: 'default', // video
-
-        _interval: undefined,
-        _overlay: undefined,
+        closeAction: true,
+        closeElement: ".js-dialog-close",
 
         onDialogOpen: function(dialog){},
         onDialogClose: function(dialog){}
@@ -4694,11 +4706,22 @@ $.widget( "metro.dialog" , {
             }
         });
 
+        this._interval = undefined;
+        this._overlay = undefined;
+
+
         if (o.overlay) {
             this._createOverlay();
         }
         this._createDialog();
 
+        if (o.closeAction === true) {
+            element.on("click", ".js-dialog-close" + o.closeElement, function(){
+                that.close();
+            });
+        }
+
+        element.appendTo($('body'));
         element.data('dialog', this);
 
         if (o.show) {
@@ -4724,7 +4747,7 @@ $.widget( "metro.dialog" , {
             }
         }
 
-        o._overlay = overlay;
+        this._overlay = overlay;
     },
 
     _createDialog: function(){
@@ -4780,10 +4803,13 @@ $.widget( "metro.dialog" , {
     },
 
     _hide: function(){
-        var element = this.element;
+        var element = this.element, o = this.options;
         element.css({
            visibility: "hidden"
         });
+        if (o.removeOnClose === true) {
+            element.remove();
+        }
     },
 
     _show: function(){
@@ -4798,8 +4824,8 @@ $.widget( "metro.dialog" , {
 
     _setPosition: function(){
         var that = this, element = this.element, o = this.options;
-        var width = element.width(),
-            height = element.height();
+        var width = element.outerWidth(),
+            height = element.outerHeight();
 
         switch (o.place) {
             case 'top-left': {
@@ -4946,7 +4972,7 @@ $.widget( "metro.dialog" , {
         element.data('opened', true);
 
         if (o.overlay) {
-            overlay = o._overlay;
+            overlay = this._overlay;
             overlay.appendTo('body').show();
             if (o.overlayClickClose) {
                 overlay.on('click', function(){
@@ -4970,7 +4996,7 @@ $.widget( "metro.dialog" , {
         }
 
         if (o.hide && parseInt(o.hide) > 0) {
-            o._interval = setTimeout(function(){
+            this._interval = setTimeout(function(){
                 that.close();
             }, parseInt(o.hide));
         }
@@ -4979,7 +5005,7 @@ $.widget( "metro.dialog" , {
     close: function(){
         var that = this, element = this.element, o = this.options;
 
-        clearInterval(o._interval);
+        clearInterval(this._interval);
 
         if (o.overlay) {
             $('body').find('.dialog-overlay').remove();
@@ -5018,84 +5044,159 @@ $.widget( "metro.dialog" , {
 });
 
 
-window.showMetroDialog = function (el, place, content, contentType){
-    var dialog = $(el), dialog_obj;
-    if (dialog.length == 0) {
-        console.log('Dialog ' + el + ' not found!');
-        return false;
-    }
-
-    dialog_obj = dialog.data('dialog');
-
-    if (dialog_obj == undefined) {
-        console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
-        return false;
-    }
-
-    if (content != undefined) {
-        switch (contentType) {
-            case 'href': dialog_obj.setContentHref(content); break;
-            case 'video': dialog_obj.setContentVideo(content); break;
-            default: dialog_obj.setContent(content);
+var dialog = {
+    open: function(el, place, content, contentType){
+        var dialog = $(el), dialog_obj;
+        if (dialog.length == 0) {
+            console.log('Dialog ' + el + ' not found!');
+            return false;
         }
-    }
 
-    if (place !== undefined) {
-        dialog_obj.options.place = place;
-    }
+        dialog_obj = dialog.data('dialog');
 
-    dialog_obj.open();
-};
-
-window.hideMetroDialog = function(el){
-    var dialog = $(el), dialog_obj;
-    if (dialog.length == 0) {
-        console.log('Dialog ' + el + ' not found!');
-        return false;
-    }
-
-    dialog_obj = dialog.data('dialog');
-
-    if (dialog_obj == undefined) {
-        console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
-        return false;
-    }
-
-    dialog_obj.close();
-};
-
-window.toggleMetroDialog = function(el, place, content, contentType){
-    var dialog = $(el), dialog_obj;
-    if (dialog.length == 0) {
-        console.log('Dialog ' + el + ' not found!');
-        return false;
-    }
-
-    dialog_obj = dialog.data('dialog');
-
-    if (dialog_obj == undefined) {
-        console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
-        return false;
-    }
-
-    if (content != undefined) {
-        switch (contentType) {
-            case 'href': dialog_obj.setContentHref(content); break;
-            case 'video': dialog_obj.setContentVideo(content); break;
-            default: dialog_obj.setContent(content);
+        if (dialog_obj == undefined) {
+            console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
+            return false;
         }
-    }
 
-    if (dialog_obj.element.data('opened') === true) {
-        dialog_obj.close();
-    } else {
+        if (content != undefined) {
+            switch (contentType) {
+                case 'href': dialog_obj.setContentHref(content); break;
+                case 'video': dialog_obj.setContentVideo(content); break;
+                default: dialog_obj.setContent(content);
+            }
+        }
+
         if (place !== undefined) {
             dialog_obj.options.place = place;
         }
+
         dialog_obj.open();
+    },
+
+    close: function(el){
+        var dialog = $(el), dialog_obj;
+        if (dialog.length == 0) {
+            console.log('Dialog ' + el + ' not found!');
+            return false;
+        }
+
+        dialog_obj = dialog.data('dialog');
+
+        if (dialog_obj == undefined) {
+            console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
+            return false;
+        }
+
+        dialog_obj.close();
+    },
+
+    toggle: function(el, place, content, contentType){
+        var dialog = $(el), dialog_obj;
+        if (dialog.length == 0) {
+            console.log('Dialog ' + el + ' not found!');
+            return false;
+        }
+
+        dialog_obj = dialog.data('dialog');
+
+        if (dialog_obj == undefined) {
+            console.log('Element not contain role dialog! Please add attribute data-role="dialog" to element ' + el);
+            return false;
+        }
+
+        if (content != undefined) {
+            switch (contentType) {
+                case 'href': dialog_obj.setContentHref(content); break;
+                case 'video': dialog_obj.setContentVideo(content); break;
+                default: dialog_obj.setContent(content);
+            }
+        }
+
+        if (dialog_obj.element.data('opened') === true) {
+            dialog_obj.close();
+        } else {
+            if (place !== undefined) {
+                dialog_obj.options.place = place;
+            }
+            dialog_obj.open();
+        }
+    },
+
+    create: function(data){
+        var dlg, id, html, buttons, button;
+
+        id = "dialog_id_" + (new Date()).getTime();
+        dlg = $("<div id='"+id+"' class='dialog dialog-ex'></div>");
+
+        if (data.title !== undefined) {
+            $("<div class='dialog-title'>"+data.title+"</div>").appendTo(dlg);
+        }
+        if (data.content !== undefined) {
+            $("<div class='dialog-content'>"+data.content+"</div>").appendTo(dlg);
+        }
+        if (data.actions !== undefined && typeof data.actions == 'object') {
+
+            buttons = $("<div class='dialog-actions'></div>").appendTo(dlg);
+
+            $.each(data.actions, function(){
+                var item = this;
+
+                button = $("<button>").attr("type", "button").addClass("button").html(item.title);
+
+                if (item.cls !== undefined) {
+                    button.addClass(item.cls);
+                }
+
+                button.appendTo(buttons);
+
+                if (item.onclick != undefined) {
+
+                    button[0].addEventListener("click", function(){
+                        if (typeof item.onclick === 'function') {
+                            item.onclick(dlg);
+                        } else {
+                            if (typeof window[item.onclick] === 'function') {
+                                window[item.onclick](dlg);
+                            } else {
+                                var result = eval("(function(){"+item.onclick+"})");
+                                result.call(dlg);
+                            }
+                        }
+                    }, true);
+                }
+            });
+        }
+
+        dlg.appendTo($("body"));
+
+        var dlg_options = $.extend({}, {
+            show: true,
+            closeAction: true,
+            removeOnClose: true
+        }, (data.options != undefined ? data.options : {}));
+
+        return dlg.dialog(dlg_options);
     }
 };
 
+window.metroDialog = dialog;
+
+$.Dialog = function(data){
+    return dialog.create(data);
+};
+
+$(window).on('resize', function(){
+    var dialogs = $('.dialog');
+
+    $.each(dialogs, function(){
+        var dlg = $(this).data('dialog'), element = dlg.element;
+        if (element.data('opened') !== true) {
+            return;
+        }
+        dlg.reset();
+    });
+});
 // Source: js/widgets/draggable.js
 $.widget( "metro.draggable" , {
 
@@ -5439,9 +5540,7 @@ $.widget( "metro.fitImage" , {
             }
         });
 
-        $("<img/>")
-            .attr('src', src)
-            .load(function(){
+        $("<img/>").attr('src', src).on('load', function(){
                 i_w = this.width;
                 i_h = this.height;
             }).remove();
@@ -6029,7 +6128,7 @@ $.widget("metro.input", {
         var element = this.element, that = this, o = this.options;
         var textarea = element.find('textarea');
 
-        console.log(textarea);
+        //console.log(textarea);
 
         var fitTextarea = function(){
             textarea.css({
@@ -9155,28 +9254,29 @@ $.widget( "metro.validator" , {
             return val.trim().length <= len;
         },
         min: function(val, min_value){
+
             if (min_value == undefined || isNaN(min_value)) {
                 return false;
             }
-            if (val.trim() === "") {
+            if (!this.number(val)) {
                 return false;
             }
             if (isNaN(val)) {
                 return false;
             }
-            return val >= min_value;
+            return Number(val) >= Number(min_value);
         },
         max: function(val, max_value){
             if (max_value == undefined || isNaN(max_value)) {
                 return false;
             }
-            if (val.trim() === "") {
+            if (!this.number(val)) {
                 return false;
             }
             if (isNaN(val)) {
                 return false;
             }
-            return val <= max_value;
+            return Number(val) <= Number(max_value);
         },
         email: function(val){
             return /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i.test(val);
@@ -9255,7 +9355,7 @@ $.widget( "metro.validator" , {
         $(window).scroll(function(e){
             var st = $(this).scrollTop();
             var delta = isNaN(st - this._scroll) ? 0 : st - this._scroll;
-            $(".validator-hint.hint2").css({
+            $(".validator-hint.hint2:not(.line)").css({
                 top: '-='+delta
             });
             this._scroll = st;
@@ -9294,7 +9394,7 @@ $.widget( "metro.validator" , {
             var func = input.data('validateFunc') != undefined ? String(input.data('validateFunc')).split(",") : [],
                 arg = input.data('validateArg') != undefined ? String(input.data('validateArg')).split(",") : [];
 
-            console.log(input.data('validateArg'));
+            //console.log(input.data('validateArg'));
 
             $.each(func, function(i, func_name){
                 if (!this_result) return;
